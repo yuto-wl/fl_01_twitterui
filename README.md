@@ -1,16 +1,32 @@
-# fl_01
+# Twitter UI を真似してみた
 
-A new Flutter project.
+## 概要
+FlutterUIの学習のため、TwitterのUIを模倣してみました。  
+現在、StatefulWidgetの理解が十分でないため、StatelessWidgetによる実装です。  
+また、あくまでレイアウト部分に焦点を置いたため、ボタンを押した時の挙動など動きの部分は基本的に作り込んでいません。  
+しかし、あまりにレイアウト重視で実際のコードとかけ離れたものを書いても仕方がないとは思うので、その辺りのバランスは多少意識しています。
 
-## Getting Started
+Android / GooglePixel4a / ダークブルー(Twitterテーマ色) です。
 
-This project is a starting point for a Flutter application.
+## 比較
+比較のため、実際のTwitterで同様のレイアウトになるよう、アカウントを作成しツイートしました。  
+左：今回作成したレイアウト、 右：Twitterのスクリーンショット
+![](/images/compare.jpg)
 
-A few resources to get you started if this is your first Flutter project:
+## 課題
+時間的制約などで実現できなかったものの、可能ならやりたかった部分。
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* スクロールバーの色を変更する。  
+  調べてみたものの割と複雑だったため、今回は諦めました。
+* ツイートの画像をボタンにする。  
+  すぐにできそう。
+* AppBarの内部のWidgetの位置を調整する。  
+  真ん中より少し上に寄ってしまっているように見えるため、もう少し下目に配置したいです。
+* 行レイアウトにサイズ制限を設けていないため、画面サイズより大きい文字数を入れるとエラーになる。  
+  列自体をコンテナで囲って、この範囲を超過しないようにすればできそう。
+* タブバーの大きさを変更する。  
+  現在、タブバーが均等に４等分されていますが、TwitterUIではタブバーの大きさは文字の大きさに準拠しています。
+  isScrollable = True に変更すると大きさは理想通りになったものの、タブバーの左右に空白が出来てしまいました。
+  こちらにしばらく取り組んだものの、 理由が不明かつ修正の目処が立たなかったため元の形で断念。
+* 変数、定数の持ち方や受け渡しの管理  
+  勉強不足！
