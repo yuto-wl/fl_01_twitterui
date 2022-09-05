@@ -50,13 +50,15 @@ class MyApp extends StatelessWidget {
               // アイコン：探す、その他
               actions: [
                 IconButton(
-                    icon: const Icon(Icons.search),
-                    iconSize: 28,
-                    onPressed: () {}),
+                  icon: const Icon(Icons.search),
+                  iconSize: 28,
+                  onPressed: () {},
+                ),
                 IconButton(
-                    icon: const Icon(Icons.more_vert),
-                    iconSize: 28,
-                    onPressed: () {})
+                  icon: const Icon(Icons.more_vert),
+                  iconSize: 28,
+                  onPressed: () {},
+                )
               ],
               // タブバー
               bottom: PreferredSize(
@@ -64,15 +66,16 @@ class MyApp extends StatelessWidget {
                 child: ColoredBox(
                   color: HexColor('171f2a'),
                   child: const TabBar(
-                      indicatorColor: Colors.blue,
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      indicatorPadding: EdgeInsets.only(left: 25, right: 25),
-                      tabs: [
-                        Tab(text: 'ツイート'),
-                        Tab(text: 'ツイートと返信'),
-                        Tab(text: 'メディア'),
-                        Tab(text: 'いいね'),
-                      ]),
+                    indicatorColor: Colors.blue,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorPadding: EdgeInsets.only(left: 25, right: 25),
+                    tabs: [
+                      Tab(text: 'ツイート'),
+                      Tab(text: 'ツイートと返信'),
+                      Tab(text: 'メディア'),
+                      Tab(text: 'いいね'),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -165,9 +168,10 @@ class MyApp extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.blue,
-              child: const Icon(Icons.add, color: Colors.white),
-              onPressed: () {}),
+            backgroundColor: Colors.blue,
+            child: const Icon(Icons.add, color: Colors.white),
+            onPressed: () {},
+          ),
         ),
       ),
     );
