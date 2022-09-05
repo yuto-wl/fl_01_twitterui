@@ -179,9 +179,9 @@ extension IntEx on int {
   /// 関数名が雑ですみません...
   String toStringRemovingZero() {
     if (this > 0) {
-      return '';
+      return toString();
     }
-    return toString();
+    return '';
   }
 }
 
@@ -209,30 +209,6 @@ class TweetTile extends StatelessWidget {
   final int replyCount;
   final int retweetCount;
   final int favoriteCount;
-
-  // リプライ数表示
-  Widget replyCounter(BuildContext context) {
-    return replyCount > 0
-        ? Text(replyCount.toString(),
-            style: const TextStyle(color: Colors.grey))
-        : const SizedBox.shrink();
-  }
-
-  // リツイート数表示
-  Widget retweetCounter(BuildContext context) {
-    return retweetCount > 0
-        ? Text(retweetCount.toString(),
-            style: const TextStyle(color: Colors.grey))
-        : const SizedBox.shrink();
-  }
-
-  // フェイバリット数表示
-  Widget favoriteCounter(BuildContext context) {
-    return favoriteCount > 0
-        ? Text(favoriteCount.toString(),
-            style: const TextStyle(color: Colors.grey))
-        : const SizedBox.shrink();
-  }
 
   // ツイート画像表示
   Widget tweetImage(BuildContext context) {
@@ -302,66 +278,73 @@ class TweetTile extends StatelessWidget {
                 // 画像
                 tweetImage(context),
                 // アイコン群
-                Row(children: [
-                  // アイコン：リプライ
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minHeight: 40),
-                    color: Colors.grey,
-                    onPressed: () {},
-                    icon: const Icon(Icons.chat_bubble_outline),
-                    iconSize: 18,
-                  ),
-                  SizedBox(width: screenSize.width * 0.01),
-                  // リプライ数
-                  replyCounter(context),
-                  const Spacer(flex: 5),
-                  // アイコン：リツイート
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minHeight: 30),
-                    color: Colors.grey,
-                    onPressed: () {},
-                    icon: const Icon(Icons.transform),
-                    iconSize: 18,
-                  ),
-                  SizedBox(width: screenSize.width * 0.01),
-                  // リツイート数
-                  retweetCounter(context),
-                  const Spacer(flex: 5),
-                  // アイコン：フェイバリット
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minHeight: 30),
-                    color: Colors.grey,
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_border),
-                    iconSize: 18,
-                  ),
-                  SizedBox(width: screenSize.width * 0.01),
-                  // フェイバリット数
-                  favoriteCounter(context),
-                  const Spacer(flex: 5),
-                  // アイコン：共有
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minHeight: 30),
-                    color: Colors.grey,
-                    onPressed: () {},
-                    icon: const Icon(Icons.share_outlined),
-                    iconSize: 18,
-                  ),
-                  const Spacer(flex: 1),
-                  // アイコン：アクティビティ
-                  IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minHeight: 30),
-                    color: Colors.grey,
-                    onPressed: () {},
-                    icon: const Icon(Icons.bar_chart),
-                    iconSize: 15,
-                  ),
-                ])
+                /// 局所的にstyleを一括で変更したい場合に便利
+                DefaultTextStyle(
+                  style: const TextStyle(color: Colors.grey),
+                  child: Row(children: [
+                    // アイコン：リプライ
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(minHeight: 40),
+                      color: Colors.grey,
+                      onPressed: () {},
+                      icon: const Icon(Icons.chat_bubble_outline),
+                      iconSize: 18,
+                    ),
+                    SizedBox(width: screenSize.width * 0.01),
+                    // リプライ数
+                    Text(replyCount.toStringRemovingZero()),
+                    // replyCounter(context),
+                    const Spacer(flex: 5),
+                    // アイコン：リツイート
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(minHeight: 30),
+                      color: Colors.grey,
+                      onPressed: () {},
+                      icon: const Icon(Icons.transform),
+                      iconSize: 18,
+                    ),
+                    SizedBox(width: screenSize.width * 0.01),
+                    // リツイート数
+                    Text(retweetCount.toString()),
+                    // retweetCounter(context),
+                    const Spacer(flex: 5),
+                    // アイコン：フェイバリット
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(minHeight: 30),
+                      color: Colors.grey,
+                      onPressed: () {},
+                      icon: const Icon(Icons.favorite_border),
+                      iconSize: 18,
+                    ),
+                    SizedBox(width: screenSize.width * 0.01),
+                    // フェイバリット数
+                    Text(favoriteCount.toStringRemovingZero()),
+                    // favoriteCounter(context),
+                    const Spacer(flex: 5),
+                    // アイコン：共有
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(minHeight: 30),
+                      color: Colors.grey,
+                      onPressed: () {},
+                      icon: const Icon(Icons.share_outlined),
+                      iconSize: 18,
+                    ),
+                    const Spacer(flex: 1),
+                    // アイコン：アクティビティ
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(minHeight: 30),
+                      color: Colors.grey,
+                      onPressed: () {},
+                      icon: const Icon(Icons.bar_chart),
+                      iconSize: 15,
+                    ),
+                  ]),
+                )
               ],
             ),
           ),
