@@ -174,6 +174,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
+extension IntEx on int {
+  /// 0以上の数字なら空文字する関数を作ったほうがスッキリするかもしれない
+  /// 関数名が雑ですみません...
+  String toStringRemovingZero() {
+    if (this > 0) {
+      return '';
+    }
+    return toString();
+  }
+}
+
 // ツイートタイル
 class TweetTile extends StatelessWidget {
   const TweetTile({
@@ -201,47 +212,35 @@ class TweetTile extends StatelessWidget {
 
   // リプライ数表示
   Widget replyCounter(BuildContext context) {
-    return Center(
-      // replyCountが1以上なら、リツイートアイコンの横にリツイート数を表示する。
-      child: replyCount > 0
-          ? Text(replyCount.toString(),
-              style: const TextStyle(color: Colors.grey))
-          : const SizedBox.shrink(),
-    );
+    return replyCount > 0
+        ? Text(replyCount.toString(),
+            style: const TextStyle(color: Colors.grey))
+        : const SizedBox.shrink();
   }
 
   // リツイート数表示
   Widget retweetCounter(BuildContext context) {
-    return Center(
-      // retweetCountが1以上なら、リツイートアイコンの横にリツイート数を表示する。
-      child: retweetCount > 0
-          ? Text(retweetCount.toString(),
-              style: const TextStyle(color: Colors.grey))
-          : const SizedBox.shrink(),
-    );
+    return retweetCount > 0
+        ? Text(retweetCount.toString(),
+            style: const TextStyle(color: Colors.grey))
+        : const SizedBox.shrink();
   }
 
   // フェイバリット数表示
   Widget favoriteCounter(BuildContext context) {
-    return Center(
-      // favoriteCountが1以上なら、リツイートアイコンの横にリツイート数を表示する。
-      child: favoriteCount > 0
-          ? Text(favoriteCount.toString(),
-              style: const TextStyle(color: Colors.grey))
-          : const SizedBox.shrink(),
-    );
+    return favoriteCount > 0
+        ? Text(favoriteCount.toString(),
+            style: const TextStyle(color: Colors.grey))
+        : const SizedBox.shrink();
   }
 
   // ツイート画像表示
   Widget tweetImage(BuildContext context) {
-    return Center(
-      // tweetImageAddressがnullでなければ、画像を表示する。
-      child: tweetImageAddress != null
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(tweetImageAddress!))
-          : const SizedBox.shrink(),
-    );
+    return tweetImageAddress != null
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.asset(tweetImageAddress!))
+        : const SizedBox.shrink();
   }
 
   @override
