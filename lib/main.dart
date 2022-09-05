@@ -20,148 +20,155 @@ class MyApp extends StatelessWidget {
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
-            backgroundColor: HexColor('171f2a'),
-            // Appバー
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(110),
-              child: AppBar(
-                backgroundColor: HexColor('2e3636'),
-                titleSpacing: 30,
-                // ユーザ名、ツイート数
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      userName,
-                      style: TextStyle(fontSize: 23),
-                    ),
-                    Text(
-                      'ツイート $tweetCount',
-                      style: TextStyle(fontSize: 17),
-                    ),
-                  ],
-                ),
-                // アイコン：戻る
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  iconSize: 28,
-                  onPressed: () {},
-                ),
-                // アイコン：探す、その他
-                actions: [
-                  IconButton(
-                      icon: const Icon(Icons.search),
-                      iconSize: 28,
-                      onPressed: () {}),
-                  IconButton(
-                      icon: const Icon(Icons.more_vert),
-                      iconSize: 28,
-                      onPressed: () {})
-                ],
-                // タブバー
-                bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(45),
-                  child: ColoredBox(
-                    color: HexColor('171f2a'),
-                    child: const TabBar(
-                        indicatorColor: Colors.blue,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorPadding: EdgeInsets.only(left: 25, right: 25),
-                        tabs: [
-                          Tab(text: 'ツイート'),
-                          Tab(text: 'ツイートと返信'),
-                          Tab(text: 'メディア'),
-                          Tab(text: 'いいね'),
-                        ]),
+          backgroundColor: HexColor('171f2a'),
+          // Appバー
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(110),
+            child: AppBar(
+              backgroundColor: HexColor('2e3636'),
+              titleSpacing: 30,
+              // ユーザ名、ツイート数
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    userName,
+                    style: TextStyle(fontSize: 23),
                   ),
+                  Text(
+                    'ツイート $tweetCount',
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ],
+              ),
+              // アイコン：戻る
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                iconSize: 28,
+                onPressed: () {},
+              ),
+              // アイコン：探す、その他
+              actions: [
+                IconButton(
+                    icon: const Icon(Icons.search),
+                    iconSize: 28,
+                    onPressed: () {}),
+                IconButton(
+                    icon: const Icon(Icons.more_vert),
+                    iconSize: 28,
+                    onPressed: () {})
+              ],
+              // タブバー
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(45),
+                child: ColoredBox(
+                  color: HexColor('171f2a'),
+                  child: const TabBar(
+                      indicatorColor: Colors.blue,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorPadding: EdgeInsets.only(left: 25, right: 25),
+                      tabs: [
+                        Tab(text: 'ツイート'),
+                        Tab(text: 'ツイートと返信'),
+                        Tab(text: 'メディア'),
+                        Tab(text: 'いいね'),
+                      ]),
                 ),
               ),
             ),
-            body: Stack(
-              children: [
-                // ツイート群
-                Scrollbar(
-                  child: ListView(
-                    children: const [
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: '最高でした。',
-                        tweetTime: '4分',
-                        tweetImageAddress: null,
-                        replyCount: 315,
-                        retweetCount: 346,
-                        favoriteCount: 765,
-                      ),
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: '黒酢酢豚、めっちゃ美味しくできたー(o・∇・o)',
-                        tweetTime: '5分',
-                        tweetImageAddress: 'images/cooking_01.jpg',
-                        replyCount: 5,
-                        retweetCount: 47,
-                        favoriteCount: 211,
-                      ),
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: '四暗刻和了った！',
-                        tweetTime: '5分',
-                        tweetImageAddress: 'images/mahjong_01.png',
-                        replyCount: 0,
-                        retweetCount: 33,
-                        favoriteCount: 5,
-                      ),
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: '「赤外線通信」…そろそろ若い人たちには通じなさそう',
-                        tweetTime: '8分',
-                        tweetImageAddress: null,
-                        replyCount: 0,
-                        retweetCount: 101,
-                        favoriteCount: 157,
-                      ),
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: 'グレープフルーツと生ハムの冷製パスタ(o・∇・o)',
-                        tweetTime: '19分',
-                        tweetImageAddress: 'images/cooking_02.jpg',
-                        replyCount: 2,
-                        retweetCount: 13,
-                        favoriteCount: 31,
-                      ),
-                      TweetTile(
-                        userName: userName,
-                        userId: userId,
-                        userAvatarAddress: userAvatarAddress,
-                        tweetText: 'アカウント作成！',
-                        tweetTime: '21分',
-                        tweetImageAddress: null,
-                        replyCount: 0,
-                        retweetCount: 1,
-                        favoriteCount: 5,
-                      ),
-                    ],
-                  ),
+          ),
+          body: Stack(
+            children: [
+              // ツイート群
+              Scrollbar(
+                child: ListView(
+                  children: const [
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: '最高でした。',
+                      tweetTime: '4分',
+                      tweetImageAddress: null,
+                      replyCount: 315,
+                      retweetCount: 346,
+                      favoriteCount: 765,
+                    ),
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: '黒酢酢豚、めっちゃ美味しくできたー(o・∇・o)',
+                      tweetTime: '5分',
+                      tweetImageAddress: 'images/cooking_01.jpg',
+                      replyCount: 5,
+                      retweetCount: 47,
+                      favoriteCount: 211,
+                    ),
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: '四暗刻和了った！',
+                      tweetTime: '5分',
+                      tweetImageAddress: 'images/mahjong_01.png',
+                      replyCount: 0,
+                      retweetCount: 33,
+                      favoriteCount: 5,
+                    ),
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: '「赤外線通信」…そろそろ若い人たちには通じなさそう',
+                      tweetTime: '8分',
+                      tweetImageAddress: null,
+                      replyCount: 0,
+                      retweetCount: 101,
+                      favoriteCount: 157,
+                    ),
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: 'グレープフルーツと生ハムの冷製パスタ(o・∇・o)',
+                      tweetTime: '19分',
+                      tweetImageAddress: 'images/cooking_02.jpg',
+                      replyCount: 2,
+                      retweetCount: 13,
+                      favoriteCount: 31,
+                    ),
+                    TweetTile(
+                      userName: userName,
+                      userId: userId,
+                      userAvatarAddress: userAvatarAddress,
+                      tweetText: 'アカウント作成！',
+                      tweetTime: '21分',
+                      tweetImageAddress: null,
+                      replyCount: 0,
+                      retweetCount: 1,
+                      favoriteCount: 5,
+                    ),
+                  ],
                 ),
-                // プラスボタン
-                Align(
-                  alignment: const Alignment(0.95, 0.95),
-                  child: FloatingActionButton(
-                      backgroundColor: Colors.blue,
-                      child: const Icon(Icons.add, color: Colors.white),
-                      onPressed: () {}),
-                )
-              ],
-            )),
+              ),
+              // プラスボタン
+              /// 素直に floatingActionButton: プロパティに渡したほうが良さそう。
+              /// 微調整は padding 等でやるとよい。
+              // Align(
+              //   alignment: const Alignment(0.95, 0.95),
+              //   child: FloatingActionButton(
+              //       backgroundColor: Colors.blue,
+              //       child: const Icon(Icons.add, color: Colors.white),
+              //       onPressed: () {}),
+              // )
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.blue,
+              child: const Icon(Icons.add, color: Colors.white),
+              onPressed: () {}),
+        ),
       ),
     );
   }
